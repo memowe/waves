@@ -39,7 +39,6 @@ $(function(){
             css: {
                 width: size + 'px',
                 height: size + 'px',
-                borderRadius: size + 'px',
             },
         });
 
