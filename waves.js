@@ -84,11 +84,11 @@ $(function(){
     }
 
     var osz     = new Array();
-    var body    = $('body');
+    var canvas  = $('<div/>', { id: 'canvas' }).insertAfter($('#config'));
 
     for ( var id = 0; id < count; id++ ) { // creashun
         osz[id] = new Osz(id);
-        body.append(osz[id].jqo);
+        canvas.append(osz[id].jqo);
     }
 
     for ( var id = 1; id < osz.length; id++ ) { // envirenmentalization
@@ -109,7 +109,7 @@ $(function(){
         if ( active ) osz[0].moveTo({ x: e.pageX - 12, y: e.pageY -12 });
     }
 
-    $('body')
+    canvas
         .mousemove(mouseMoveAction)
         .click(function(e) {
             active = ! active;
