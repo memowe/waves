@@ -13,17 +13,40 @@ $(function(){
     // configuration
     //
 
-    var count       = 10;
+    // default values
+    var count       = 7;
     var distance    = 20;
     var size        = 10;
-    var gravity     = { x: 15, y: 0 };
-    var slowness    = 80;
+    var gravity     = { x: 0, y: 15 };
+    var slowness    = 90;
     var lightness   = .98;
+
+    function readConfig() {
+
+        count       = parseInt($('#count').val());
+        distance    = parseInt($('#distance').val());
+        size        = parseInt($('#size').val());
+        slowness    = parseInt($('#slowness').val());
+        lightness   = parseFloat($('#lightness').val());
+
+        var gravVal = parseInt($('#gravity').val());
+        var gravDir = $('input[name="gravity-dir"]:checked').val();
+        gravity     = {
+            x: gravDir == 'x' ? gravVal : 0,
+            y: gravDir == 'y' ? gravVal : 0,
+        };
+
+        init();
+    }
+
+    $('p#config select, p#config input').change(readConfig);
 
 
     //
     // generate oszillators
     //
+
+    var canvas = $('<div/>', { id: 'canvas' }).insertAfter($('#config'));
 
     function Osz(id) {
 
@@ -82,20 +105,27 @@ $(function(){
         };
     }
 
-    var osz     = new Array();
-    var canvas  = $('<div/>', { id: 'canvas' }).insertAfter($('#config'));
+    var osz;
 
-    for ( var id = 0; id < count; id++ ) { // creashun
-        osz[id] = new Osz(id);
-        canvas.append(osz[id].jqo);
-    }
+    function init() {
 
-    for ( var id = 1; id < osz.length; id++ ) { // envirenmentalization
-        osz[id].env.push( osz[ id - 1 ] );
-        if ( id + 1 < osz.length ) {
-            osz[id].env.push( osz[ id + 1 ] );
+        canvas.find('.osz').hide().remove();
+        osz = new Array();
+
+        for ( var id = 0; id < count; id++ ) { // creashun
+            osz[id] = new Osz(id);
+            canvas.append(osz[id].jqo);
+        }
+
+        for ( var id = 1; id < osz.length; id++ ) { // envirenmentalization
+            osz[id].env.push( osz[ id - 1 ] );
+            if ( id + 1 < osz.length ) {
+                osz[id].env.push( osz[ id + 1 ] );
+            }
         }
     }
+
+    init();
 
 
     //
@@ -105,7 +135,7 @@ $(function(){
     var active = false;
 
     function mouseMoveAction(e) {
-        if ( active ) osz[0].moveTo({ x: e.pageX - 12, y: e.pageY -12 });
+        if ( active ) osz[0].moveTo({ x: e.pageX - 10, y: e.pageY -10 });
     }
 
     canvas

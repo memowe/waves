@@ -9,6 +9,69 @@
 <script type="text/javascript" src="waves.js"></script>
 </head>
 <body>
+    <p id="config">
+        count:
+        <select size="1" id="count">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="7" selected="selected">7</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+        </select>
+        &ndash;
+        distance:
+        <select size="1" id="distance">
+            <option value="10">10</option>
+            <option value="20" selected="selected">20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="200">200</option>
+        </select>
+        &ndash;
+        size:
+        <select size="1" id="size">
+            <option value="10" selected="selected">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+        &ndash;
+        gravity:
+        <select size=1" id="gravity">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15" selected="selected">15</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+        <input type="radio" name="gravity-dir" id="gravity-dir-down" value="y" checked="checked">
+        <label for="gravity-dir-down">down</label>
+        <input type="radio" name="gravity-dir" id="gravity-dir-right" value="x">
+        <label for="gravity-dir-right">right</label>
+        &ndash;
+        slowness:
+        <select size="1" id="slowness">
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="70">70</option>
+            <option value="90" selected="selected">90</option>
+        </select>
+        &ndash;
+        lightness:
+        <select size="1" id="lightness">
+            <option value="0.5">0.50</option>
+            <option value="0.8">0.80</option>
+            <option value="0.9">0.90</option>
+            <option value="0.95">0.95</option>
+            <option value="0.97">0.97</option>
+            <option value="0.98" selected="selected">0.98</option>
+            <option value="0.99">0.99</option>
+        </select>
+    </p>
     <p id="no-js-warning">Sorry, you need javascript to see the waves.</p>
 </body>
 </html>
